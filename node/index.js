@@ -23,9 +23,9 @@ module.exports = yeoman.generators.Base.extend({
             message: 'Would you like to enable this option?',
             default: true
         }, {
-                name: 'projectName',
-                message: 'Project Name',
-                default: path.basename(process.cwd())
+            name: 'projectName',
+            message: 'Project Name',
+            default: path.basename(process.cwd())
         }];
 
         this.prompt(prompts, function (props) {
