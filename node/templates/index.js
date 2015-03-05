@@ -1,6 +1,6 @@
 'use strict';
 
-var debug = require('debug')('hotel-fe-static');
+var debug = require('debug')('<%= projectName %>');
 var app = require('./app');
 
 app.set('port', process.env.PORT || 8000);
