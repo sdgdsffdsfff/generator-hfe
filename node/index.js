@@ -18,18 +18,18 @@ module.exports = yeoman.generators.Base.extend({
         ));
 
         var prompts = [{
-            type: 'confirm',
-            name: 'someOption',
-            message: 'Would you like to enable this option?',
-            default: true
-        }, {
             name: 'projectName',
             message: 'Project Name',
             default: path.basename(process.cwd())
+        }, {
+            name: 'version',
+            message: 'Version Number',
+            default: '0.0.1'
         }];
 
         this.prompt(prompts, function (props) {
-            this.someOption = props.someOption;
+            this.projectName = props.projectName;
+            this.version = props.version;
             this.props = props;
 
             done();

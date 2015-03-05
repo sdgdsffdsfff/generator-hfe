@@ -6,9 +6,9 @@
   "main": "app/index.js",
   "repository": "someuser/generator-hfe",
   "author": {
-    "name": "",
-    "email": "",
-    "url": "https://github.com/someuser"
+    "name": "GuoKai",
+    "email": "badkaikai@gmail.com",
+    "url": "https://github.com/PaulGuo"
   },
   "engines": {
     "node": ">=0.10.0"
