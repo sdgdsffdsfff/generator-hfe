@@ -1,0 +1,21 @@
+image: ubuntu
+env:
+    - PATH=$PWD/bin:$PATH
+    - WORKSPACE=$PWD
+    - STATIC_PATH=/opt/meituan/static/hotel/
+    - TEST_STATIC_PATH=/opt/meituan/static/test/hotel
+    - DEPLOY_PATH=$WORKSPACE/build/public/
+script:
+    - pwd
+    - sudo npm install -g gulp
+    - npm install
+    - gulp
+after-script:
+    - PATH=$PWD/bin:$PATH
+    - WORKSPACE=$PWD
+    - STATIC_PATH=/opt/meituan/static/hotel/
+    - TEST_STATIC_PATH=/opt/meituan/static/test/hotel
+    - DEPLOY_PATH=$WORKSPACE/build/public/
+    - echo '拷贝静态资源到静态服务器'
+    - rsync -avi $DEPLOY_PATH sankuai@mobile-static01:$STATIC_PATH
+    - rsync -avi $DEPLOY_PATH sankuai@mobile-static02:$STATIC_PATH
