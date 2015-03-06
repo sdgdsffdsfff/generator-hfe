@@ -33,6 +33,10 @@ module.exports = yeoman.generators.Base.extend({
                     name: 'Node Controller',
                     value: 'controller',
                     checked: true
+                }, {
+                    name: 'Angular Component',
+                    value: 'ng-component',
+                    checked: true
                 }
             ]
         }];
@@ -55,6 +59,9 @@ module.exports = yeoman.generators.Base.extend({
                     break;
                 case 'controller':
                     this.composeWith('hfe:controller');
+                    break;
+                case 'ng-component':
+                    this.composeWith('hfe:ng-component');
                     break;
                 default:
                     this.composeWith('hfe:node');
