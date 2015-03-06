@@ -28,7 +28,7 @@ module.exports = yeoman.generators.Base.extend({
         }, {
             type: 'confirm',
             name: 'dependency',
-            message: 'Do you wanna install dependency after project created?',
+            message: 'Install node_modules now?',
             default: true
         }];
 
