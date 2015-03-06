@@ -25,11 +25,17 @@ module.exports = yeoman.generators.Base.extend({
             name: 'version',
             message: 'Version Number',
             default: '0.0.1'
+        }, {
+            type: 'confirm',
+            name: 'dependency',
+            message: 'Do you wanna install dependency after project created?',
+            default: true
         }];
 
         this.prompt(prompts, function (props) {
             this.projectName = props.projectName;
             this.version = props.version;
+            this.dependency = props.dependency;
             this.props = props;
 
             done();
@@ -70,6 +76,10 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     install: function () {
+        if(!this.dependency) {
+            return;
+        }
+
         this.installDependencies({
             skipInstall: this.options['skip-install']
         });
