@@ -1,6 +1,6 @@
 {
   "name": "generator-hfe",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Yeoman Generator for HFE",
   "license": "MIT",
   "main": "app/index.js",
@@ -16,7 +16,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "files": [],
   "keywords": [
     "yeoman-generator"
   ],
