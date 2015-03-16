@@ -1,7 +1,7 @@
 {
   "name": "generator-hfe",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "version": "0.0.1",
+  "description": "Yeoman Generator for HFE",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "someuser/generator-hfe",
