@@ -8,8 +8,8 @@ TEST_STATIC_PATH=/opt/meituan/static/test/hotel
 DEPLOY_PATH=$WORKSPACE/build/public/
 
 npm install
+npm outdated --depth=0 # 检查哪些依赖有了新版本
 
-# grunt build
 gulp --env test
 
 echo '拷贝静态资源到静态服务器'
