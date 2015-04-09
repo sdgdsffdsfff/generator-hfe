@@ -76,6 +76,10 @@ module.exports = yeoman.generators.Base.extend({
                 this.templatePath('gitattributes'),
                 this.destinationPath('.gitattributes')
             );
+            this.fs.copy(
+                this.templatePath('Makefile'),
+                this.destinationPath('Makefile')
+            );
         }
     },
 
