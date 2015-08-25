@@ -12,29 +12,23 @@ module.exports = yeoman.generators.Base.extend({
     prompting: function () {
         var done = this.async();
 
-        // Have Yeoman greet the user.
-        this.log(yosay(
-            'Welcome to the fine' + chalk.red('Hfe') + ' generator!'
-        ));
-
-        var prompts = [{
+        var prompts = [ {
             name: 'componentName',
-            message: 'Component Name',
-            default: 'ngComponent.js'
+            message: 'What\'s the name of your component?',
+            default: 'ngHfeComponentModule'
         }, {
-            name: 'providerName',
-            message: 'Provider Name',
-            default: 'providerName'
+            name: 'moduleType',
+            message: 'Would kind of module do you want to create?',
+            type: 'list',
+            choices: ['directive', 'factory', 'service', 'filter'],
+            default: 0
         }, {
             name: 'directiveName',
-            message: 'Directive Name',
-            default: 'directiveName'
+            message: 'What\'s the name of your directive?',
+            default: 'ngHfeComponent'
         }];
 
         this.prompt(prompts, function (props) {
-            this.componentName = props.componentName;
-            this.providerName = props.providerName;
-            this.directiveName = props.directiveName;
             this.props = props;
 
             done();
@@ -43,7 +37,7 @@ module.exports = yeoman.generators.Base.extend({
 
     writing: {
         app: function () {
-            this.template('index.js', this.componentName, this.props);
+            this.copy('src/_' + this.props.moduleType + '.js', this.props.componentName + '.js');
         },
 
         projectfiles: function () {
