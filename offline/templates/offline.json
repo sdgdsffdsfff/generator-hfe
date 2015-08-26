@@ -1,0 +1,14 @@
+{
+    "name": "tianlang",
+    "description": "offline of tianlang",
+    "version": "1.0.0",
+    "src": "http://test.i.meituan.com/trip/awp/offline-zip/ca7ce9e643352ed6e39c2d908333edd3.zip",
+    "main": "www/index.html",
+    "wapUrl": "http://test.i.meituan./trip/tianlang/index.html",
+    "offlineIsValid": true,
+    "zipVersion": 2015082001,
+    "iosVersion": "1.0.0",
+    "androidVersion": "1.0.0",
+    "iosUpdateType": 1,
+    "androidUpdateType": 1
+}
