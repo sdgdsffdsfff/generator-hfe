@@ -14,8 +14,9 @@ module.exports = yeoman.generators.Base.extend({
 
 		// Have Yeoman greet the user.
 		this.log(yosay(
-			'Welcome to the fine' + chalk.red('Hfe') + ' generator!'
+			'Welcome to the fine' + chalk.red(' Hfe') + ' generator!'
 		));
+		console.log(path.basename(process.cwd()));
 		var prompts = [{
 			name: 'projectName',
 			message: 'Project Name',
@@ -69,18 +70,11 @@ module.exports = yeoman.generators.Base.extend({
 			this.template('build.sh');
 			this.template('README.md');
 			this.template('offline.json');
-            this.template('_package.json', 'package.json');
+			this.template('_package.json', 'package.json');
 			this.template('_gitignore', '.gitignore');
 			this.template('gulpfile.js');
-
-		},
-
-		projectfiles: function () {
-
+			this.template('repo-info.json');
+			this.directory('gulp', 'gulp');
 		}
-	},
-
-	install: function () {
-
 	}
 });

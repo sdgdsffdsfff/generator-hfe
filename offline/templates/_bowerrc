@@ -1,0 +1,4 @@
+{
+     "directory":"./",
+     "shorthand_resolver":"ssh://git@git.sankuai.com/<%= props.groupName %>/<%= props.projectName %>.git"
+}

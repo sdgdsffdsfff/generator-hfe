@@ -1,14 +1,22 @@
 {
-    "name": "tianlang",
-    "description": "offline of tianlang",
-    "version": "1.0.0",
-    "src": "http://test.i.meituan.com/trip/awp/offline-zip/ca7ce9e643352ed6e39c2d908333edd3.zip",
-    "main": "www/index.html",
-    "wapUrl": "http://test.i.meituan./trip/tianlang/index.html",
-    "offlineIsValid": true,
-    "zipVersion": 2015082001,
-    "iosVersion": "1.0.0",
-    "androidVersion": "1.0.0",
-    "iosUpdateType": 1,
-    "androidUpdateType": 1
+    "data": [
+        {
+            "name": "<%= props.projectName %>",
+            "description": "<%= props.projectDesc %>",
+            "version": "<%= props.version %>",
+            "src": "http://msstest.sankuai.info/v1/mss_a5676b5c63924106b2e422c3820dde3e/mynodejs-container/62b24a2c74a7194684d7ddba702b179f.zip",
+            "main": "www/index.html",
+            "wapUrl": "http://i.meituan.com/trip/tianlang/index.html",
+            "offlineIsValid": true,
+            "zipVersion": 2015091501,
+            "iosVersion": "1.0.0",
+            "androidVersion": "1.0.0",
+            "iosUpdateType": 1,
+            "androidUpdateType": 1,
+            "offlinePreUrl": [
+                "http://mc.meituan.net/hotel/",
+                "http://mc.meituan.net/test/hotel/"
+            ]
+        }
+    ]
 }

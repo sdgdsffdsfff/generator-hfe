@@ -1,37 +1,26 @@
 {
-  "name": "sirius",
-  "version": "1.0.0",
-  "description": "sirius: An Ionic project",
+  "name": "<%= props.packageName %>",
+  "version": "<%= props.version %>",
+  "description": "a hfe project",
+  "author": {
+    "name": "<%= props.author %>",
+    "email": "<%= props.email %>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.sankuai.com/projects/<%= props.groupName %>/repos/<%= props.projectName %>/browse"
+  },
+  "devDependencies": {},
   "dependencies": {
-    "gulp": "^3.5.6",
-    "gulp-bump": "^0.3.1",
-    "gulp-concat": "^2.2.0",
-    "gulp-json-editor": "^2.2.1",
-    "gulp-minify-css": "^0.3.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-sass": "^1.3.3"
-  },
-  "devDependencies": {
-    "bower": "^1.3.3",
-    "del": "^1.2.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-minify-css": "^0.3.13",
-    "gulp-processhtml": "^1.1.0",
+    "del": "^2.0.2",
+    "fs-extra": "^0.24.0",
+    "gulp": "^3.9.0",
+    "gulp-combo": "^0.1.9",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.2.0",
-    "gulp-uncss": "^1.0.3",
-    "gulp-util": "^2.2.14",
-    "shelljs": "^0.3.0"
-  },
-  "cordovaPlugins": [
-    "cordova-plugin-device",
-    "cordova-plugin-console",
-    "cordova-plugin-whitelist",
-    "cordova-plugin-splashscreen",
-    "com.ionic.keyboard"
-  ],
-  "cordovaPlatforms": [
-    "ios"
-  ]
+    "path": "^0.12.7",
+    "through2": "^2.0.0"
+  }
 }
