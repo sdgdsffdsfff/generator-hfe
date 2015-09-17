@@ -15,6 +15,7 @@ gulpLoadPlugins.cssmin = require('gulp-cssmin');
 gulpLoadPlugins.rename = require('gulp-rename');
 gulpLoadPlugins.jsmin = require('gulp-jsmin');
 gulpLoadPlugins.combo = require('gulp-combo');
+gulpLoadPlugins.precombo = require('gulp-pre-combo');
 gulpLoadPlugins.path = path;
 
 
