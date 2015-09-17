@@ -21,6 +21,8 @@
     "angular/ng_module_getter": 0,
     "angular/ng_di": 0,
     "angular/ng_controller_as": 0,
-    "angular/ng_controller_as_vm": 0
+    "angular/ng_controller_as_vm": 0,
+    "angular/ng_typecheck_function": 0,
+    "angular/ng_typecheck_object": 0
   }
 }
