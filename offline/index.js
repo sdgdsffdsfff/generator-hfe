@@ -47,7 +47,7 @@ module.exports = yeoman.generators.Base.extend({
 		}, {
 			name: 'groupName',
 			message: 'Group Name:',
-			default: 'HOTEL',
+			default: 'HFE',
 			warning: ''
 		}, ];
 

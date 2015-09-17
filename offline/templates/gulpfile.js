@@ -18,8 +18,6 @@ gulpLoadPlugins.combo = require('gulp-combo');
 gulpLoadPlugins.precombo = require('gulp-pre-combo');
 gulpLoadPlugins.path = path;
 
-
-
 gulpTaskList.forEach(function (taskfile) {
 	require('./gulp/tasks/' + taskfile)(gulp, gulpLoadPlugins, config);
 });
