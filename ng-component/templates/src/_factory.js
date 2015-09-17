@@ -1,8 +1,22 @@
-'use strict';
-angular.module('<%= props.githubUser %>.<%= _.camelize(props.name) %>', [])
-  .factory('<%= _.camelize(props.githubUser + props.name) %>', function() {
-    var runtimeObj = 'Alo';
-    return {
-      runtimeObj: runtimeObj
-    };
-  });
+(function(factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD
+    define(['angular'], function(angular) {
+      return factory(angular);
+    });
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('angular'));
+  } else {
+    factory(angular);
+  }
+}(function(angular) {
+  'use strict';
+
+  angular.module('<%= _.camelize(props.appName) %>', [])
+    .factory('<%= _.camelize(props.appName) %>', function() {
+      var runtimeObj = 'Alo';
+      return {
+        runtimeObj: runtimeObj
+      };
+    });
+}));
