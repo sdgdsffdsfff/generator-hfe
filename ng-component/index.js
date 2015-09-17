@@ -95,5 +95,6 @@ module.exports = yeoman.generators.Base.extend({
 
   install: function() {
     shelljs.exec('git init && git add --all && git commit -m "initial commit"');
+    shelljs.exec('npm install');
   }
 });

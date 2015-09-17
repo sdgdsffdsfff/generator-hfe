@@ -54,16 +54,16 @@
     "gulp-karma": "0.0.4",
     "karma-chrome-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.5",
-    "shelljs": "^0.5.3",
     "sinon": "^1.15.4",
 <%if (cssprocessor === 'less') { %>
     "gulp-less": "^3.0.3",
 <% } %><%if (cssprocessor === 'scss') { %>
     "gulp-sass": "^2.0.4",
 <% } %><%if (cssprocessor === 'postcss') { %>
-     "cssnext": "^1.8.3",
-     "postcss-nested": "^0.3.2",
+    "cssnext": "^1.8.3",
+    "postcss-nested": "^0.3.2",
 <% } %>
+    "shelljs": "^0.5.3"
   },
   "precommit": [
     "lint"
