@@ -37,6 +37,10 @@ module.exports = yeoman.generators.Base.extend({
                     name: 'Angular Component',
                     value: 'ng-component',
                     checked: true
+                }, {
+                    name: 'Web Pages(with offline)',
+                    value: 'offline',
+                    checked: true
                 }
             ]
         }];
@@ -62,6 +66,9 @@ module.exports = yeoman.generators.Base.extend({
                     break;
                 case 'ng-component':
                     this.composeWith('hfe:ng-component');
+                    break;
+                case 'offline':
+                    this.composeWith('hfe:offline');
                     break;
                 default:
                     this.composeWith('hfe:node');
