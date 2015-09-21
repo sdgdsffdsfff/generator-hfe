@@ -16,15 +16,15 @@ module.exports = yeoman.generators.Base.extend({
 		this.log(yosay(
 			'Welcome to the fine' + chalk.red(' Hfe') + ' generator!'
 		));
-		console.log(path.basename(process.cwd()));
+		var appname = path.basename(process.cwd());
 		var prompts = [{
 			name: 'projectName',
 			message: 'Project Name',
-			default: this.appname
+			default: appname
 		}, {
 			name: 'projectDesc',
 			message: 'Description of Project?',
-			default: this.appname,
+			default: appname,
 			warning: ''
 		}, {
 			name: 'srcDir',
@@ -54,6 +54,7 @@ module.exports = yeoman.generators.Base.extend({
 		this.prompt(prompts, function (props) {
 			this.srcDir = (/^y/i).test(props.srcDir);
 			this.props = props;
+			console.log(props);
 			done();
 		}.bind(this));
 	},
@@ -76,5 +77,8 @@ module.exports = yeoman.generators.Base.extend({
 			this.template('repo-info.json');
 			this.directory('gulp', 'gulp');
 		}
+	},
+	install: function () {
+		this.installDependencies();
 	}
 });

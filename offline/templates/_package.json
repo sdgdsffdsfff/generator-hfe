@@ -18,6 +18,7 @@
     "gulp-combo": "^0.1.9",
     "gulp-cssmin": "^0.1.7",
     "gulp-jsmin": "^0.1.5",
+    "gulp-json-editor": "^2.2.1",
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-pre-combo": "^1.0.1",
     "gulp-rename": "^1.2.2",

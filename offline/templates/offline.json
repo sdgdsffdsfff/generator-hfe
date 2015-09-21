@@ -1,22 +1,14 @@
 {
-    "data": [
-        {
-            "name": "<%= props.projectName %>",
-            "description": "<%= props.projectDesc %>",
-            "version": "<%= props.version %>",
-            "src": "http://msstest.sankuai.info/v1/mss_a5676b5c63924106b2e422c3820dde3e/mynodejs-container/62b24a2c74a7194684d7ddba702b179f.zip",
-            "main": "www/index.html",
-            "wapUrl": "http://i.meituan.com/trip/tianlang/index.html",
-            "offlineIsValid": true,
-            "zipVersion": 2015091501,
-            "iosVersion": "1.0.0",
-            "androidVersion": "1.0.0",
-            "iosUpdateType": 1,
-            "androidUpdateType": 1,
-            "offlinePreUrl": [
-                "http://mc.meituan.net/hotel/",
-                "http://mc.meituan.net/test/hotel/"
-            ]
-        }
-    ]
+    "data": [{
+        "name": "12306",
+        "version": "1.0.0",
+        "src": "http://msstest.sankuai.info/v1/mss_a5676b5c63924106b2e422c3820dde3e/mynodejs-container-3/89f0be33a02ca32e7ce9ecedfdb2c081.zip",
+        "useOfflineZip": true,
+        "zipVersion": "2015092103",
+        "iosVersion": "1.0.0",
+        "androidVersion": "1.0.0",
+        "iosUpdateType": 1,
+        "androidUpdateType": 1,
+        "offlinePreUrl": "https://kyfw.12306.cn/"
+    }]
 }

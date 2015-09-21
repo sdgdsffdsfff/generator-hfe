@@ -17,6 +17,7 @@ gulpLoadPlugins.jsmin = require('gulp-jsmin');
 gulpLoadPlugins.combo = require('gulp-combo');
 gulpLoadPlugins.precombo = require('gulp-pre-combo');
 gulpLoadPlugins.path = path;
+gulpLoadPlugins.jeditor = require("gulp-json-editor");
 
 gulpTaskList.forEach(function (taskfile) {
 	require('./gulp/tasks/' + taskfile)(gulp, gulpLoadPlugins, config);
@@ -24,14 +25,14 @@ gulpTaskList.forEach(function (taskfile) {
 
 
 gulp.task('default', ['del', 'copyto', 'cssmin', 'jsmin'], function () {
-	
-	setTimeout(function(){
-		gulp.run('pre-combo');
-	},2000);
 
-	setTimeout(function(){
+	setTimeout(function () {
+		gulp.run('pre-combo');
+	}, 2000);
+
+	setTimeout(function () {
 		gulp.run('combo');
-	},4000);
+	}, 4000);
 });
 
 
@@ -79,4 +80,16 @@ gulp.task('newbranch', function () {
 		}
 
 	});
-})
+});
+
+gulp.task('zip', function () {
+	exec('chmod +x build.sh && ./build.sh', function (err, stdout, stderr) {
+		return;
+	})
+});
+
+
+//更改json中zip包名称
+gulp.task('modify-offline-json', ['mj'], function () {
+	console.log('modify-offline-json')
+});

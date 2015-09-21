@@ -44,7 +44,26 @@ function findMax(a, index) {
 	return r;
 }
 
+/**
+ * 格式化离线包版本号
+ * @param  {[type]} v [description]
+ * @return {[type]}   [description]
+ */
+function formatZipVersion(v) {
+	var v = String(v);
+	var yy = new Date().getFullYear();
+	var mm = new Date().getMonth() + 1 <= 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1;
+	var dd = new Date().getDate() <= 10 ? '0' + new Date().getDate() : new Date().getDate();
+	var diffDd = v.substr(0, 8);
+	if (String(yy) + String(mm) + String(dd) == String(diffDd)) {//日期前缀不同，重新定义次数
+		var times = v.substr(-2) * 1 + 1 < 10 ? '0' + (v.substr(-2) * 1 + 1) : v.substr(-2) * 1 + 1;
+	} else {
+		var times = '01';
+	}
+	return String(yy) + String(mm) + String(dd) + String(times);
+}
 
 module.exports = {
-	getBiggestVersion:getBiggestVersion
+	"getBiggestVersion": getBiggestVersion,
+	"formatZipVersion": formatZipVersion
 }
