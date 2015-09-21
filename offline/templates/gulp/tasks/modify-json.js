@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 /**
  * 打包成功后，修改离线包的线上地址和离线包版本号
  * @param  {[type]} gulp   [description]
@@ -17,11 +15,8 @@ module.exports = function (gulp, Plugin, config) {
 		var zipUrl = config.zipPathPrefix + name + '.zip';
 		gulp.src("offline.json")
 			.pipe(Plugin.jeditor(function (json) {
-				// var data = json.data[0];
 				json.data[0].src = zipUrl;
 				var zv = json.data[0].zipVersion; //获取配置文件中的版本号
-				// console.log(zv)
-				// console.log(util.formatZipVersion(zv))
 				console.log(util.formatZipVersion)
 				json.data[0].zipVersion = util.formatZipVersion(zv);
 				return json;
