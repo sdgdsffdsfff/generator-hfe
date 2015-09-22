@@ -1,9 +1,10 @@
 'use strict'
 var gulp = require('gulp'),
-	config = require('./gulp/gulp.config'),
+	gulpConfig = require('./gulp/gulp.config'),
 	gulpLoadPlugins = require('gulp-load-plugins'),
 	gulpTaskList = require('fs').readdirSync('./gulp/tasks/'),
 	util = require('./gulp/util/index');
+	repoInfoJSON
 
 var exec = require('child_process').exec,
 	path = require('path'),
@@ -20,7 +21,7 @@ gulpLoadPlugins.path = path;
 gulpLoadPlugins.jeditor = require("gulp-json-editor");
 
 gulpTaskList.forEach(function (taskfile) {
-	require('./gulp/tasks/' + taskfile)(gulp, gulpLoadPlugins, config);
+	require('./gulp/tasks/' + taskfile)(gulp, gulpLoadPlugins, gulpConfig);
 });
 
 
@@ -34,8 +35,8 @@ gulp.task('default', ['del', 'copyto', 'cssmin', 'jsmin'], function () {
 		gulp.run('combo');
 	}, 4000);
 });
-
-
+var repoInfoJSON = require(path.resolve(process.cwd(), 'repo-info.json'));
+//新建分支
 gulp.task('newbranch', function () {
 	exec('git branch -a & git tag', function (err, stdout, stderr, cb) {
 
@@ -56,7 +57,7 @@ gulp.task('newbranch', function () {
 		// 回写入repo-info.json 的 version
 		try {
 
-			var repoInfoJSON = require(path.resolve(process.cwd(), 'repo-info.json'));
+			
 			repoInfoJSON.version = r;
 			fs.writeJson("./repo-info.json", repoInfoJSON, function (err) {
 				if (err) {
@@ -82,14 +83,30 @@ gulp.task('newbranch', function () {
 	});
 });
 
+//生成离线包
 gulp.task('zip', function () {
 	exec('chmod +x build.sh && ./build.sh', function (err, stdout, stderr) {
 		return;
 	})
 });
 
-
 //更改json中zip包名称
 gulp.task('modify-offline-json', ['mj'], function () {
 	console.log('modify-offline-json')
 });
+
+var command = gulpConfig.exec;
+//预发布
+gulp.task('prepub',function(){
+	var msg = gulp.env.m;
+	util.execGitCommand(command.prepub(repoInfoJSON.version,msg));
+});
+//发布
+gulp.task('publish',function(){
+	util.execGitCommand(command.publish(repoInfoJSON.version));
+});
+//打tag
+gulp.task('tag',function(){
+	util.execGitCommand(cocommand.tag(repoInfoJSON.version));
+});
+

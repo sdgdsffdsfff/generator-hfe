@@ -1,6 +1,7 @@
 "use strict";
 
-
+var exec = require('child_process').exec;
+var colors = require('colors');
 
 function getBiggestVersion(A) {
 	var a = [];
@@ -55,7 +56,7 @@ function formatZipVersion(v) {
 	var mm = new Date().getMonth() + 1 <= 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1;
 	var dd = new Date().getDate() <= 10 ? '0' + new Date().getDate() : new Date().getDate();
 	var diffDd = v.substr(0, 8);
-	if (String(yy) + String(mm) + String(dd) == String(diffDd)) {//日期前缀不同，重新定义次数
+	if (String(yy) + String(mm) + String(dd) == String(diffDd)) { //日期前缀不同，重新定义次数
 		var times = v.substr(-2) * 1 + 1 < 10 ? '0' + (v.substr(-2) * 1 + 1) : v.substr(-2) * 1 + 1;
 	} else {
 		var times = '01';
@@ -63,7 +64,26 @@ function formatZipVersion(v) {
 	return String(yy) + String(mm) + String(dd) + String(times);
 }
 
+/**
+ * 执行git命令，接收指令，返回结果
+ * 
+ */
+
+function execGitCommand(command) {
+	exec(command, function (err, stdout, stderr) {
+		
+		var msg = "命令 >>> " + command + " <<< 的执行结果：";
+		console.log(msg.red);
+		if (stderr) {
+			console.log(stdout);
+			console.log(stderr);
+		}
+	});
+
+}
+
 module.exports = {
 	"getBiggestVersion": getBiggestVersion,
-	"formatZipVersion": formatZipVersion
+	"formatZipVersion": formatZipVersion,
+	"execGitCommand": execGitCommand
 }
