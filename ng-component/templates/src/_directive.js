@@ -15,7 +15,7 @@
   var component = angular.module('<%= _.camelize(props.appName) %>', []);
 
   component.run(["$templateCache", function($templateCache) {
-    $templateCache.put("templates/component.html", "templateCache component");
+    $templateCache.put("templates/component.html", "<div>templateCache component</div>");
   }]);
 
   component.directive('<%= _.camelize(props.directiveName) %>', ['$compile', function($compile) {

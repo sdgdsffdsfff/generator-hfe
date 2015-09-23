@@ -1,43 +1,30 @@
- describe('component-name', function() {
+describe('<%= _.camelize(props.appName) %>', function() {
+  var elem,
+      scope;
 
-   beforeEach(module('component-name'));
+  beforeEach(module('<%= _.camelize(props.appName) %>'));
 
-   it('should have thingService', function() {
-     inject(function(thingService) {
-       expect(thingService).toBeDefined();
-     });
-   });
+  beforeEach(inject(function($rootScope, $compile) {
+    scope = $rootScope.$new();
+  }));
 
-   describe('thingService', function() {
+  function compileDirective() {
+    var tpl = '<div <%= _.camelize(props.directiveName) %>></div>';
 
-     var thingService;
+    inject(function($compile) {
+      elem = $compile(tpl)(scope);
+    });
 
-     beforeEach(inject(function(_thingService_) {
-       thingService = _thingService_;
-     }));
+    scope.$digest();
+  };
 
-     it('should be an object', function() {
-       expect(typeof thingService).toBe('object');
-     });
+  describe('initialisation', function() {
+    beforeEach(function() {
+      compileDirective();
+    });
 
-     it('should have a method sayHello()', function() {
-       expect(thingService.sayHello).toBeDefined();
-     });
-
-     describe('sayHello()', function() {
-
-       it('should be a function', function() {
-         expect(typeof thingService.sayHello).toBe('function');
-       });
-
-       it('should return a string', function() {
-         expect(typeof thingService.sayHello()).toBe('string');
-       });
-
-       it('should return \'Hello!\'', function() {
-         expect(thingService.sayHello()).toEqual('Hello!');
-       });
-     });
-   });
- });
- 
+    it('should have a div', function() {
+      expect(elem.find('div').length).toEqual(1);
+    });
+  });
+});
