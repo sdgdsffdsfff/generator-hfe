@@ -1,8 +1,9 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
-var shelljs = require('shelljs');
+var yosay = require('yosay');
 var path = require('path');
+var shelljs = require('shelljs');
 var defaults = require('./_defaults');
 var _ = require('lodash');
 
@@ -13,6 +14,11 @@ module.exports = yeoman.generators.Base.extend({
 
   prompting: function() {
     var done = this.async();
+
+    // Have Yeoman greet the user.
+    this.log(yosay(
+      'Welcome to the fine' + chalk.red('Hfe') + ' generator!'
+    ));
 
     var prompts = [{
       name: 'appName',
