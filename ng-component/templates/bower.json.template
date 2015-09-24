@@ -1,0 +1,21 @@
+{
+  "name": "<%= appName %>",
+  "version": "<%= appVersion %>",
+  "authors": [
+    "<%= authorName %> <%= authorEmail %>"
+  ],
+  "description": "autosize textareas for AngularJS",
+  "main": "./lib/<%= appName %>",
+  "keywords": [
+    "angular",
+    "angular-component",
+    "mt-component"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "license": "MIT"
+}

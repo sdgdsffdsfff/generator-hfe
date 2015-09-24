@@ -73,6 +73,7 @@ module.exports = yeoman.generators.Base.extend({
       this.copy('src/_' + this.props.moduleType + '.js', this.props.appName + '.js');
       this.template('README.md.template', 'README.md', this.props);
       this.template('package.json.template', 'package.json', this.props);
+      this.template('bower.json.template', 'bower.json', this.props);
     },
 
     projectfiles: function() {
@@ -96,6 +97,7 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_d_eslintignore'),
         this.destinationPath('.eslintignore')
       );
+      this.template('_d_bowerrc', '.bowerrc', this.props);
     }
   },
 

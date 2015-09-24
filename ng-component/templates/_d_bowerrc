@@ -1,0 +1,11 @@
+{
+  "registry": {
+    "search": [
+      "http://hfe.sankuai.com/bower/",
+      "https://bower.herokuapp.com"
+    ],
+    "register": "http://hfe.sankuai.com/bower/"
+    "directory": "./",
+    "shorthand_resolver": "ssh://git@git.sankuai.com/<%= props.groupName %>/<%= props.appName %>.git"
+  }
+}
