@@ -6,6 +6,6 @@
     ],
     "register": "http://hfe.sankuai.com/bower/"
     "directory": "./",
-    "shorthand_resolver": "ssh://git@git.sankuai.com/<%= props.groupName %>/<%= props.appName %>.git"
+    "shorthand_resolver": "ssh://git@git.sankuai.com/<%= groupName %>/<%= appName %>.git"
   }
 }

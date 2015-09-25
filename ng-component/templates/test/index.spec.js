@@ -1,15 +1,15 @@
-describe('<%= _.camelize(props.appName) %>', function() {
+describe('<%= appName %>', function() {
   var elem,
       scope;
 
-  beforeEach(module('<%= _.camelize(props.appName) %>'));
+  beforeEach(module('<%= appName %>'));
 
   beforeEach(inject(function($rootScope, $compile) {
     scope = $rootScope.$new();
   }));
 
   function compileDirective() {
-    var tpl = '<div <%= _.camelize(props.directiveName) %>></div>';
+    var tpl = '<div data-<%= directive %>></div>';
 
     inject(function($compile) {
       elem = $compile(tpl)(scope);

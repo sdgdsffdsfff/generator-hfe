@@ -28,7 +28,6 @@ module.exports = (function() {
     authorEmail: user.email || '',
     appVersion: '0.1.0',
     appDescription: 'a angular component',
-    groupName: 'HFE',
-    
+    groupName: 'HFE'
   };
 })();

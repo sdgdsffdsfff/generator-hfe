@@ -12,8 +12,10 @@
 }(function(angular) {
   'use strict';
   
-  angular.module('<%= _.camelize(props.appName) %>', [])
-    .service('<%= _.camelize(props.appName) %>', function() {
+  angular.module('<%= appName %>', [])
+    .service('<%= providerName %>', function() {
       this.runtimeObj = 'Alo';
     });
+
+  return '<%= appName %>';
 }));

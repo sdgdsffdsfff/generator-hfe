@@ -12,11 +12,13 @@
 }(function(angular) {
   'use strict';
 
-  angular.module('<%= _.camelize(props.appName) %>', [])
-    .factory('<%= _.camelize(props.appName) %>', function() {
+  angular.module('<%= appName %>', [])
+    .factory('<%= providerName %>', function() {
       var runtimeObj = 'Alo';
       return {
         runtimeObj: runtimeObj
       };
     });
+
+  return '<%= appName %>';
 }));

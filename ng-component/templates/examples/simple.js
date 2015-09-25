@@ -1,14 +1,14 @@
 import angular from 'angular';
 
-require('<$$& appName $$>/assets/index.css');
+require('<%= appName %>/assets/index.css');
 
 // demo module dependencies
-angular.module('ng.ui.demos', [require('<$$& appName $$>')]);
+angular.module('ng.ui.demos', [require('<%= appName %>')]);
 
 // demo.html
 const tpl = `
 <div class="ng-cloak">
-    <div data-directive></div>
+    <div data-<%= directive %>></div>
 </div>
 `;
 

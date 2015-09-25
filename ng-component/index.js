@@ -6,6 +6,7 @@ var path = require('path');
 var shelljs = require('shelljs');
 var defaults = require('./_defaults');
 var _ = require('lodash');
+var __ = require('underscore.string');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function() {
@@ -62,7 +63,10 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function(props) {
-      this.props = _.merge(props, defaults);
+      this.props = _.merge(defaults, props, {
+        providerName: __.camelize(props.appName.replace(/\./g, '-')),
+        directive: __.slugify(props.appName),
+      });
 
       done();
     }.bind(this));
@@ -70,10 +74,35 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     app: function() {
-      this.copy('src/_' + this.props.moduleType + '.js', this.props.appName + '.js');
+      this.template('src/_' + this.props.moduleType + '.js', 'src/' + this.props.appName + '.js', this.props);
+      this.template('src/index.js', 'src/index.js', this.props);
       this.template('README.md.template', 'README.md', this.props);
       this.template('package.json.template', 'package.json', this.props);
       this.template('bower.json.template', 'bower.json', this.props);
+      this.template('gulpfile.js', 'gulpfile.js', this.props);
+    },
+
+    assets: function() {
+      this.fs.copy(
+        this.templatePath('src/assets/**/*'),
+        this.destinationPath('src/assets')
+      );
+    },
+
+    examples: function() {
+      this.fs.copyTpl(
+        this.templatePath('examples/**/*'),
+        this.destinationPath('examples'),
+        this.props
+      );
+    },
+
+    test: function() {
+      this.fs.copyTpl(
+        this.templatePath('test'),
+        this.destinationPath('test'),
+        this.props
+      );
     },
 
     projectfiles: function() {

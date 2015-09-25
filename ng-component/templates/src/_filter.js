@@ -12,10 +12,12 @@
 }(function(angular) {
   'use strict';
   
-  angular.module('<%= _.camelize(props.appName) %>', [])
-    .filter('<%= _.camelize(props.appName) %>', function() {
+  angular.module('<%= appName %>', [])
+    .filter('<%= providerName %>', function() {
       return function(text) {
         return 'it works';
       };
     });
+
+  return '<%= appName %>';
 }));

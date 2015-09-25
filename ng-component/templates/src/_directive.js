@@ -12,13 +12,13 @@
 }(function(angular) {
   'use strict';
 
-  var component = angular.module('<%= _.camelize(props.appName) %>', []);
+  var component = angular.module('<%= appName %>', []);
 
   component.run(["$templateCache", function($templateCache) {
     $templateCache.put("templates/component.html", "<div>templateCache component</div>");
   }]);
 
-  component.directive('<%= _.camelize(props.directiveName) %>', ['$compile', function($compile) {
+  component.directive('<%= providerName %>', ['$compile', function($compile) {
     // Runs during compile
     return {
       // name: '',
@@ -39,5 +39,5 @@
     };
   }]);
 
-  return '<%= _.camelize(props.appName) %>';
+  return '<%= appName %>';
 }));

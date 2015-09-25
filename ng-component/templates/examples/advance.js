@@ -1,9 +1,9 @@
 import angular from 'angular';
 
-require('<$$& appName $$>/assets/index.css');
+require('<%= appName %>/assets/index.css');
 
 // demo module dependencies
-angular.module('ng.ui.demos', [require('<$$& appName $$>')]);
+angular.module('ng.ui.demos', [require('<%= appName %>')]);
 
 // demo.js
 angular.module('ng.ui.demos')
