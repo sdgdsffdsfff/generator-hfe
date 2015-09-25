@@ -24,6 +24,7 @@
     "iniparser": "^1.0.5",
     "lodash": "^3.10.1",
     "shelljs": "^0.5.3",
+    "underscore.string": "^3.2.2",
     "yeoman-generator": "^0.18.0",
     "yosay": "^0.3.0"
   },
