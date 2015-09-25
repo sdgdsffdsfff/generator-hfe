@@ -44,11 +44,13 @@ module.exports = yeoman.generators.Base.extend({
       choices: ['directive', 'factory', 'service', 'filter'],
       default: 0
     }, {
-      name: 'directiveName',
+      name: 'providerName',
       message: function(answers) {
         return 'What\'s the name of your ' + answers.moduleType + '?';
       },
-      default: 'ngHfeComponent'
+      default: function(answers) {
+        return _.camelCase(answers.appName);
+      }
     }, {
       name: 'cssprocessor',
       message: 'Which css preprocessor do you want?',
@@ -64,7 +66,6 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function(props) {
       this.props = _.merge(defaults, props, {
-        providerName: __.camelize(props.appName.replace(/\./g, '-')),
         directive: __.slugify(props.appName),
       });
 
