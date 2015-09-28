@@ -5,6 +5,7 @@ var pkg = require('./package.json');
 var cwd = __dirname;
 var path = require('path');
 var Server = require('karma').Server;
+var ngserver = require('@hfe/ng-server');
 
 function clean() {
   shelljs.rm('-rf', path.join(cwd, 'build'));
@@ -111,15 +112,14 @@ gulp.task('tag', function () {
   shelljs.exec('git push origin master:master');
 });
 
-gulp.task('server', ['compile'], function () {
-    var child = require('child_process').exec('node_modules/.bin/rt serve -p 3001 --devport 9987');
-    child.stdout.pipe(process.stdout);
-    child.stderr.pipe(process.stderr);
-    return;
-});
-
 gulp.task('build', ['css'] , function() {
     shelljs.exec('./node_modules/.bin/rt build');
+});
+
+gulp.task('server', ['compile'], function() {
+  ngserver({
+    staticpath: path.join(cwd, 'build')
+  });
 });
 
 gulp.task('start', ['server', 'css', 'css:watch']);

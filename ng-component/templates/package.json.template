@@ -32,6 +32,7 @@
   "style": "assets/index.css",
   "devDependencies": {
     "@mtfe/rt": "^0.2.0",
+    "@hfe/ng-server": "^0.0.3",
     "babel": "^5.8.21",
     "babel-eslint": "^4.0.5",
     "async-load": "^1.0.3",
