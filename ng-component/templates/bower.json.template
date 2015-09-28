@@ -4,7 +4,7 @@
   "authors": [
     "<%= authorName %> <%= authorEmail %>"
   ],
-  "description": "autosize textareas for AngularJS",
+  "description": "<%= appDescription %>",
   "main": "./lib/<%= appName %>",
   "keywords": [
     "angular",
@@ -15,7 +15,13 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test"
+    "test",
+    "examples/",
+    "package.json"
   ],
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.sankuai.com/<%= groupName %>/<%= appName %>.git"
+  },
   "license": "MIT"
 }

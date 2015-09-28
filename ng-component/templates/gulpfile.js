@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var shelljs = require('shelljs');
 var babel = require('gulp-babel');
 var pkg = require('./package.json');
+var bowerpkg = require('./bower.json');
 var cwd = __dirname;
 var path = require('path');
 var Server = require('karma').Server;
@@ -97,7 +98,12 @@ gulp.task('test', ['compile'], function (done) {
 gulp.task('publish', ['compile'], function (done) {
   var npm = 'npm ';
   // have to include $HOME path
-  if (pkg.name.indexOf('@mtfe') > -1) npm = 'npm --registry=http://r.npm.sankuai.com --cache=$HOME/.npm/.cache/mnpm --userconfig=$HOME/.mnpmrc ';
+  if (/@(mt|h)fe/.test(pkg.name)) {
+    npm = 'npm --registry=http://r.npm.sankuai.com --cache=$HOME/.npm/.cache/mnpm --userconfig=$HOME/.mnpmrc ';
+  }
+
+  shelljs.exec('bower register' + ' ' + bowerpkg.name + ' ' + bowerpkg.repository.url);
+
   shelljs.exec(npm + ' publish', function () {
     clean();
     done();
