@@ -67,8 +67,8 @@ module.exports = yeoman.generators.Base.extend({
                 case 'ng-component':
                     this.composeWith('hfe:ng-component');
                     break;
-                case 'offline':
-                    this.composeWith('hfe:offline');
+                case 'awp':
+                    this.composeWith('hfe:awp');
                     break;
                 default:
                     this.composeWith('hfe:node');

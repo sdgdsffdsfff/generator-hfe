@@ -105,8 +105,3 @@ gulp.task('prepub',function(){
 gulp.task('publish',function(){
 	util.execGitCommand(command.publish(repoInfoJSON.version));
 });
-//打tag
-gulp.task('tag',function(){
-	util.execGitCommand(cocommand.tag(repoInfoJSON.version));
-});
-
