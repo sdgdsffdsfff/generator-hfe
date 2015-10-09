@@ -1,0 +1,33 @@
+{
+  "name": "<%= props.packageName %>",
+  "version": "<%= props.version %>",
+  "description": "a hfe project",
+  "author": {
+    "name": "<%= props.author %>",
+    "email": "<%= props.email %>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.sankuai.com/projects/<%= props.groupName %>/repos/<%= props.projectName %>/browse"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "colors": "^1.1.2",
+    "del": "^2.0.2",
+    "fs-extra": "^0.24.0",
+    "gulp": "^3.9.0",
+    "gulp-combo": "^0.1.9",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-html-ssi": "0.0.92",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-json-editor": "^2.2.1",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-pre-combo": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "path": "^0.12.7",
+    "proxrox": "^1.7.2",
+    "ssi": "^0.1.5",
+    "through2": "^2.0.0"
+  }
+}
