@@ -4,10 +4,6 @@
 
 /**
  * 打包成功后，修改离线包的线上地址和离线包版本号
- * @param  {[type]} gulp   [description]
- * @param  {[type]} Plugin [description]
- * @param  {[type]} config [description]
- * @return {[type]}        [description]
  */
 var util = require('../util/index');
 

@@ -1,3 +1,3 @@
 
 
-alert("ok")
+alert("js is ok!")

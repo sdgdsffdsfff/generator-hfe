@@ -36,6 +36,7 @@ module.exports = yeoman.generators.Base.extend({
 				pageTitle = this.props.pageTitle;
 			this.mkdir(pageName);
 			this.template('index.html', pageName + '/index.html');
+			this.template('footer.html', pageName + '/footer.html');
 			this.template('index.scss', pageName + '/index.scss');
 			this.template('index.js', pageName + '/index.js');
 		}

@@ -12,10 +12,6 @@ module.exports = yeoman.generators.Base.extend({
 	prompting: function () {
 		var done = this.async();
 
-		// Have Yeoman greet the user.
-		// this.log(yosay(
-		// 	'Welcome to the fine ' + chalk.red(' Hfe') + ' generator!'
-		// ));
 		var appname = path.basename(process.cwd());
 		var prompts = [{
 			name: 'projectName',

@@ -39,7 +39,7 @@ module.exports = yeoman.generators.Base.extend({
                     checked: true
                 }, {
                     name: 'Web Pages(with offline)',
-                    value: 'offline',
+                    value: 'awp',
                     checked: true
                 }
             ]
