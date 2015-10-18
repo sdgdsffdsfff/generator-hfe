@@ -19,14 +19,14 @@ function Prepub(cfg) {
 			if (err) {
 				console.log(err);
 			}
-			console.log(stderr);
 			if (stdout == '500') {
-				console.log('发布错误：' + stdout)
+				console.log('文件：' + stdout + '发布失败！');
 			} else {
-				console.log('发布成功：' + stdout);
+				console.log('文件：' + stdout + "发布成功！");
 			}
-
+			cb(null, file);
 		})
+
 	})
 }
 module.exports = Prepub;

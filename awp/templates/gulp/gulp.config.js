@@ -1,6 +1,6 @@
 module.exports = {
 	//这里可以配置一些公共参数
-	zipPathPrefix: 'http://awp-assets.meituan.net/',
+	zipPathPrefix: 'http://awp-assets.meituan.net/HFE/5/0.1.0/',
 	exec: {
 		prepub: function (branch, msg) {
 			if(!msg){

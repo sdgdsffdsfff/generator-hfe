@@ -6,7 +6,7 @@ module.exports = function (gulp, Plugin, config) {
 	var repoinfo = Plugin.repoInfoJSON;
 	var pt = repoinfo.publishType;
 	var pubconfig = config.pubConfig;
-	gulp.task('prepub:html', function () {
+	gulp.task('prepub:html', ['build:prepub'], function () {
 		var publishType = pubconfig[pt][1] //测试环境
 		var cfg = {
 			version: repoinfo.version,
@@ -15,9 +15,9 @@ module.exports = function (gulp, Plugin, config) {
 			publishType: publishType
 		}
 		gulp.src('build/**/*.html')
-			.pipe(prepub(cfg))
+			.pipe(prepub(cfg));
 	});
-	gulp.task('publish:html', function () {
+	gulp.task('publish:html', ['build'], function () {
 		var publishType = pubconfig[pt][0] //正式环境
 		var cfg = {
 			version: repoinfo.version,
@@ -26,6 +26,6 @@ module.exports = function (gulp, Plugin, config) {
 			publishType: publishType
 		}
 		gulp.src('build/**/*.html')
-			.pipe(prepub(cfg))
+			.pipe(prepub(cfg));
 	});
 };
