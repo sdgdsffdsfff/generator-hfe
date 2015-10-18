@@ -45,7 +45,24 @@ module.exports = yeoman.generators.Base.extend({
 			message: 'Group Name:',
 			default: 'HFE',
 			warning: ''
-		}, ];
+		}, {
+			type: 'list',
+			name: 'publicType',
+			message: '请选择一种发布方式',
+			choices: [{
+				name: '内网项目(外网不可见)',
+				value: 'vip',
+				checked: false
+			}, {
+				name: '外网i版',
+				value: 'h5',
+				checked: true
+			}, {
+				name: '外网pc版',
+				value: 'pc',
+				checked: true
+			}]
+		}];
 
 		this.prompt(prompts, function (props) {
 			this.srcDir = (/^y/i).test(props.srcDir);

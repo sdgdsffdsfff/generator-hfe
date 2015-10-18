@@ -51,11 +51,11 @@ function findMax(a, index) {
  * @return {[type]}   [description]
  */
 function formatZipVersion(v) {
-	var v = String(v);
-	var yy = new Date().getFullYear();
-	var mm = new Date().getMonth() + 1 <= 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1;
-	var dd = new Date().getDate() <= 10 ? '0' + new Date().getDate() : new Date().getDate();
-	var diffDd = v.substr(0, 8);
+	var v = String(v),
+		yy = new Date().getFullYear(),
+		mm = new Date().getMonth() + 1 < 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1,
+		dd = new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate(),
+		diffDd = v.substr(0, 8);
 	if (String(yy) + String(mm) + String(dd) == String(diffDd)) { //日期前缀不同，重新定义次数
 		var times = v.substr(-2) * 1 + 1 < 10 ? '0' + (v.substr(-2) * 1 + 1) : v.substr(-2) * 1 + 1;
 	} else {
@@ -71,7 +71,7 @@ function formatZipVersion(v) {
 
 function execGitCommand(command) {
 	exec(command, function (err, stdout, stderr) {
-		
+
 		var msg = "命令 >>> " + command + " <<< 的执行结果：";
 		console.log(msg.red);
 		if (stderr) {

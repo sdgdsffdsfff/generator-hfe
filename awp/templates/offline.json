@@ -1,10 +1,10 @@
 {
     "data": [{
-        "name": "12306",
-        "version": "1.0.0",
-        "src": "http://msstest.sankuai.info/v1/mss_a5676b5c63924106b2e422c3820dde3e/mynodejs-container-3/89f0be33a02ca32e7ce9ecedfdb2c081.zip",
+        "name": "<%= props.projectName %>",
+        "version": "<%= props.version %>",
+        "src": "",
         "useOfflineZip": true,
-        "zipVersion": "2015092103",
+        "zipVersion": "2015101803",
         "iosVersion": "1.0.0",
         "androidVersion": "1.0.0",
         "iosUpdateType": 1,

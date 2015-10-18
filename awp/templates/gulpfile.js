@@ -9,6 +9,7 @@ var exec = require('child_process').exec,
 	path = require('path'),
 	fs = require('fs-extra');
 
+gulpLoadPlugins.repoInfoJSON = require(path.resolve(process.cwd(), 'repo-info.json'));
 gulpLoadPlugins.del = require('del');
 gulpLoadPlugins.cssmin = require('gulp-cssmin');
 gulpLoadPlugins.rename = require('gulp-rename');
@@ -20,7 +21,10 @@ gulpLoadPlugins.jeditor = require("gulp-json-editor");
 gulpLoadPlugins.sass = require('gulp-sass');
 
 gulpTaskList.forEach(function (taskfile) {
-	require('./gulp/tasks/' + taskfile)(gulp, gulpLoadPlugins, gulpConfig);
+	var suffix = taskfile.split('.').pop();
+	if (suffix == 'js') { //过滤其它文件
+		require('./gulp/tasks/' + taskfile)(gulp, gulpLoadPlugins, gulpConfig);
+	}
 });
 
 //启动服务
@@ -34,34 +38,29 @@ gulp.task('server', ['sass:watch'], function () {
 	});
 });
 
-gulp.task('server:stop', function () {
-	exec('proxrox stop');
-})
-
-//项目默认构建
-gulp.task('build', ['del', 'copyto', 'cssmin', 'jsmin'], function () {
-	//pre-combo和combo之间的异步操作
-	//TODO:promise来处理
-	setTimeout(function () {
-		gulp.run('pre-combo');
-	}, 2000);
-
-	setTimeout(function () {
-		gulp.run('combo');
-	}, 4000);
-});
+//项目默认构建:publish环境
+gulp.task('build', ['del', 'copyto', 'cssmin', 'jsmin', 'pre-combo', 'combo']);
+//项目默认构建：prepub环境
+gulp.task('build:prepub', ['del', 'copyto', 'cssmin', 'jsmin', 'pre-combo:prepub', 'combo:prepub']);
 
 //生成离线包
 gulp.task('zip', function () {
 	exec('chmod +x build.sh && ./build.sh', function (err, stdout, stderr) {
-		return;
+		console.log(stdout);
+		if (err) {
+			console.log(stderr);
+		}
 	})
 });
 
 //新建分支
-var repoInfoJSON = require(path.resolve(process.cwd(), 'repo-info.json'));
 gulp.task('newbranch', function () {
-	exec('git branch -a & git tag', function (err, stdout, stderr, cb) {
+	exec('git branch -a && git tag', function (err, stdout, stderr, cb) {
+		//非GIT仓库
+		if (err) {
+			console.log(stderr);
+			return;
+		}
 		var versions = stdout.match(/\d+\.\d+\.\d+/ig),
 			r = util.getBiggestVersion(versions);
 
@@ -71,32 +70,31 @@ gulp.task('newbranch', function () {
 			r[2]++;
 			r = r.join('.');
 		}
-		console.log('新分支：daily/' + r);
+		console.log('New branch name：daily/' + r);
 		var execStr = 'git checkout -b daily/' + r;
 		exec(execStr);
 
 		// 回写入repo-info.json 的 version
 		try {
-			repoInfoJSON.version = r;
-			fs.writeJson("./repo-info.json", repoInfoJSON, function (err) {
+			gulpLoadPlugins.repoInfoJSON.version = r;
+			fs.writeJson("./repo-info.json", gulpLoadPlugins.repoInfoJSON, function (err) {
 				if (err) {
 					console.log(err);
 				} else {
-					console.log("update repo-info.json.");
+					console.log("Update repo-info.json file successfully");
 				}
 			});
-
 			var offlineJSON = require(path.resolve(process.cwd(), 'offline.json'));
-			offlineJSON.version = r;
+			offlineJSON.data[0].version = r;
 			fs.writeJson("./offline.json", offlineJSON, function (err) {
 				if (err) {
 					console.log(err);
 				} else {
-					console.log("update offline.json.");
+					console.log("Update offline.json file successfully");
 				}
 			});
 		} catch (e) {
-			console.log('未找到repo-info.json');
+			console.log('Can not find repo-info.json file, please try again.');
 		}
 	});
 });
@@ -108,11 +106,12 @@ gulp.task('shell_modify-offline-json', ['mj'], function () {
 
 var command = gulpConfig.exec;
 //预发布到测试环境，示例命令===>[gulp prepub -m 'update info']
-gulp.task('prepub', function () {
+gulp.task('prepub', ['build:prepub', 'prepub:html'], function () {
 	var msg = gulp.env.m;
-	util.execGitCommand(command.prepub(repoInfoJSON.version, msg));
+	util.execGitCommand(command.prepub(gulpLoadPlugins.repoInfoJSON.version, msg));
 });
+
 //发布到线上，示例命令===>[gulp publish]
-gulp.task('publish', function () {
-	util.execGitCommand(command.publish(repoInfoJSON.version));
+gulp.task('publish', ['build', 'publish:html'], function () {
+	util.execGitCommand(command.publish(gulpLoadPlugins.repoInfoJSON.version));
 });
