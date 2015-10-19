@@ -20,9 +20,9 @@ function Prepub(cfg) {
 				console.log(err);
 			}
 			if (stdout == '500') {
-				console.log('文件：' + stdout + '发布失败！');
+				console.log('文件：' + stdout + ' 发布失败！');
 			} else {
-				console.log('文件：' + stdout + "发布成功！");
+				console.log('文件：' + stdout + ' 发布成功！');
 			}
 			cb(null, file);
 		})

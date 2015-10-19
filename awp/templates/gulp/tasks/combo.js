@@ -1,26 +1,22 @@
 'use strict';
 
 module.exports = function (gulp, Plugin, config) {
-	gulp.task('combo', function () {
-		var repoInfoJSON = require(Plugin.path.resolve(process.cwd(),
-			'repo-info.json'));
-		var version = repoInfoJSON.version;
-		var group = repoInfoJSON.group;
-		var repoName = repoInfoJSON.name;
+	gulp.task('combo', ['del', 'copyto'], function () {
+		var repoinfo = require('../../repo-info.json');
 		var baseUri = 'http://awp-assets.meituan.net/';
-		gulp.src('build/**/*.html')
+		gulp.src('src/**/*.html')
+			.pipe(Plugin.precombo(repoinfo))
 			.pipe(Plugin.combo(baseUri, null))
+			.pipe(Plugin.ssi())
 			.pipe(gulp.dest('build'));
-	})
-	gulp.task('combo:prepub', function () {
-		var repoInfoJSON = require(Plugin.path.resolve(process.cwd(),
-			'repo-info.json'));
-		var version = repoInfoJSON.version;
-		var group = repoInfoJSON.group;
-		var repoName = repoInfoJSON.name;
+	});
+	gulp.task('combo:prepub', ['del', 'copyto'], function () {
+		var repoinfo = require('../../repo-info.json');
 		var baseUri = 'http://awp-assets.sankuai.com/';
-		gulp.src('build/**/*.html')
+		gulp.src('src/**/*.html')
+			.pipe(Plugin.precombo(repoinfo))
 			.pipe(Plugin.combo(baseUri, null))
+			.pipe(Plugin.ssi())
 			.pipe(gulp.dest('build'));
 	})
 };

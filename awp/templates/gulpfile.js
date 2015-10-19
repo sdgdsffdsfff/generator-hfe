@@ -19,6 +19,7 @@ gulpLoadPlugins.precombo = require('gulp-pre-combo');
 gulpLoadPlugins.path = path;
 gulpLoadPlugins.jeditor = require("gulp-json-editor");
 gulpLoadPlugins.sass = require('gulp-sass');
+gulpLoadPlugins.ssi = require("gulp-html-ssi2");
 
 gulpTaskList.forEach(function (taskfile) {
 	var suffix = taskfile.split('.').pop();
@@ -29,7 +30,7 @@ gulpTaskList.forEach(function (taskfile) {
 
 //启动服务
 gulp.task('server', ['sass:watch'], function () {
-	exec('proxrox start repo-info.json', function (err, stdout, stderr) {
+	exec('proxrox stop ;proxrox start repo-info.json', function (err, stdout, stderr) {
 		console.log(stdout);
 		if (stderr) {
 			console.log(stdout);
@@ -39,9 +40,9 @@ gulp.task('server', ['sass:watch'], function () {
 });
 
 //项目默认构建:publish环境
-gulp.task('build', ['del', 'copyto', 'cssmin', 'jsmin', 'pre-combo', 'combo']);
+gulp.task('build', ['del', 'copyto', 'cssmin', 'jsmin', 'combo']);
 //项目默认构建：prepub环境
-gulp.task('build:prepub', ['del', 'copyto', 'cssmin', 'jsmin', 'pre-combo:prepub', 'combo:prepub']);
+gulp.task('build:prepub', ['del', 'copyto', 'cssmin', 'jsmin', 'combo:prepub']);
 
 //生成离线包
 gulp.task('zip', function () {
